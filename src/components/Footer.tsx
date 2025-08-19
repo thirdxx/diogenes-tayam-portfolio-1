@@ -13,7 +13,7 @@ const Footer = () => {
           
           <div className="w-full text-center">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Diogenes Tayam III. All rights reserved.
+              © {new Date().getFullYear()} Diogenes A. Tayam III. All rights reserved.
             </p>
           </div>
         </div>
