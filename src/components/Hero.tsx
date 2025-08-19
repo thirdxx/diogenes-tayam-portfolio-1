@@ -12,10 +12,10 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-hero opacity-10"></div>
-      
+
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -53,20 +53,20 @@ const Hero = () => {
             className="mb-8"
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              <span className="block text-foreground">Hi, I'm</span>
-              <span className="block gradient-text">Alex Johnson</span>
+              <span className="block text-foreground mt-20">Hi, I'm</span>
+              <span className="block gradient-text text-6xl md:text-8xl leading-tight md:leading-[1.1]">
+                Diogenes Tayam
+              </span>
             </h1>
-            
+
             <div className="text-2xl md:text-3xl text-muted-foreground mb-8 h-20">
               <TypeAnimation
                 sequence={[
+                  "Web Developer",
+                  2000,
                   "Full Stack Developer",
                   2000,
-                  "React Specialist",
-                  2000,
-                  "UI/UX Enthusiast",
-                  2000,
-                  "Problem Solver",
+                  "Flutter Developer",
                   2000,
                 ]}
                 wrapper="span"
@@ -76,15 +76,16 @@ const Hero = () => {
               />
             </div>
 
-            <motion.p
+            {/* <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.8 }}
               className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
             >
-              I create exceptional digital experiences with modern web technologies. 
-              Passionate about clean code, beautiful interfaces, and solving complex problems.
-            </motion.p>
+              I create exceptional digital experiences with modern web
+              technologies. Passionate about clean code, beautiful interfaces,
+              and solving complex problems.
+            </motion.p> */}
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -99,7 +100,7 @@ const Hero = () => {
               >
                 View My Work
               </Button>
-              
+
               <div className="flex space-x-4">
                 <Button
                   variant="ghost"
@@ -108,7 +109,7 @@ const Hero = () => {
                   asChild
                 >
                   <a
-                    href="https://github.com"
+                    href="https://github.com/thirdxx"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub Profile"
@@ -116,7 +117,7 @@ const Hero = () => {
                     <Github className="h-6 w-6" />
                   </a>
                 </Button>
-                
+
                 <Button
                   variant="ghost"
                   size="lg"
@@ -124,7 +125,7 @@ const Hero = () => {
                   asChild
                 >
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/diogenes-tayam-9208ab372/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn Profile"
@@ -132,17 +133,14 @@ const Hero = () => {
                     <Linkedin className="h-6 w-6" />
                   </a>
                 </Button>
-                
+
                 <Button
                   variant="ghost"
                   size="lg"
                   className="p-3 hover:scale-110 transition-transform"
                   asChild
                 >
-                  <a
-                    href="mailto:alex@example.com"
-                    aria-label="Send Email"
-                  >
+                  <a href="mailto:diogenesiiiaraojo.tayam@gmail.com" aria-label="Send Email">
                     <Mail className="h-6 w-6" />
                   </a>
                 </Button>

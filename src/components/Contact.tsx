@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
+// import "./Contact.css";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,57 +11,88 @@ import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
+  const form = useRef<HTMLFormElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setIsLoading(true);
+    setMessage(null);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      if (form.current) {
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
-
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+        if (serviceId && templateId && publicKey) {
+          const result = await emailjs.sendForm(
+            serviceId,
+            templateId,
+            form.current,
+            publicKey
+          );
+          setMessage({
+            type: "success",
+            text: "Message sent successfully! 🎉",
+          });
+          form.current.reset();
+          setTimeout(() => setMessage(null), 3000);
+        } else {
+          setMessage({
+            type: "error",
+            text: "EmailJS not configured. Please email me directly.",
+          });
+          setTimeout(() => setMessage(null), 3000);
+        }
+      }
+    } catch (error) {
+      setMessage({
+        type: "error",
+        text: "Failed to send message. Please try again.",
+      });
+      setTimeout(() => setMessage(null), 3000);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: Mail,
       label: "Email",
-      value: "alex@example.com",
-      href: "mailto:alex@example.com"
+      value: "diogenesiiiaraojo.tayam@gmail.com",
+      href: "mailto:diogenesiiiaraojo.tayam@gmail.com",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567"
+      value: "+63 945 5394 093",
+      href: "tel:+639455394093",
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "San Francisco, CA",
-      href: "#"
-    }
+      value: "Sorsogon City, Sorsogon",
+      href: "#",
+    },
   ];
 
   const socialLinks = [
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com/alexjohnson"
+      href: "https://github.com/thirdxx",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/alexjohnson"
-    }
+      href: "https://www.linkedin.com/in/diogenes-tayam-9208ab372/",
+    },
   ];
 
   return (
@@ -76,8 +109,8 @@ const Contact = () => {
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Have a project in mind? Let's discuss how we can work together to 
-            bring your ideas to life.
+            Got an idea or project? Reach out and let’s explore how we can
+            collaborate to turn your vision into reality.
           </p>
         </motion.div>
 
@@ -93,9 +126,9 @@ const Contact = () => {
             <div>
               <h3 className="text-2xl font-bold mb-6">Let's Connect</h3>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                I'm always open to discussing new opportunities, interesting projects, 
-                or just having a chat about technology and development. Feel free to 
-                reach out through any of the channels below.
+                I’m always happy to talk about new opportunities, exciting
+                projects, or simply chat about tech and development. Reach out
+                anytime using the channels below.
               </p>
             </div>
 
@@ -163,8 +196,8 @@ const Contact = () => {
             <Card className="shadow-large">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
+
+                <form ref={form} onSubmit={sendEmail} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name *</Label>
@@ -213,10 +246,10 @@ const Contact = () => {
 
                   <Button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isLoading}
                     className="w-full gradient-bg text-lg py-6 hover:shadow-glow transition-all duration-300"
                   >
-                    {isSubmitting ? (
+                    {isLoading ? (
                       <div className="flex items-center gap-2">
                         <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
                         Sending...
@@ -228,6 +261,17 @@ const Contact = () => {
                       </div>
                     )}
                   </Button>
+                  {message && (
+                    <div
+                      className={`mt-4 text-center text-base font-medium ${
+                        message.type === "success"
+                          ? "text-green-600"
+                          : "text-red-600"
+                      }`}
+                    >
+                      {message.text}
+                    </div>
+                  )}
                 </form>
               </CardContent>
             </Card>

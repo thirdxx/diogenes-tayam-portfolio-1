@@ -1,32 +1,39 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import profileImage from "@/assets/profile-image.jpg";
 
 const About = () => {
   const interests = [
     "Web Development",
-    "Machine Learning",
-    "Open Source",
+    "Dashboard Designing",
+    "UI/UX Designing",
+    "App Development",
+    "Music",
+    "Video Editing",
     "Photography",
-    "Travel",
-    "Music"
+    "Movie Marathon",
+    "Photo Editing",
+    "Swimming",
   ];
 
   const values = [
-    {
-      title: "Clean Code",
-      description: "Writing maintainable, readable, and efficient code that stands the test of time."
-    },
-    {
-      title: "User Experience",
-      description: "Creating intuitive and delightful experiences that users love to interact with."
-    },
-    {
-      title: "Continuous Learning",
-      description: "Staying curious and constantly exploring new technologies and methodologies."
-    }
-  ];
+  {
+    title: "Clean Code",
+    description:
+      "Crafting code that’s readable, maintainable, and built for long-term scalability.",
+  },
+  {
+    title: "User Experience",
+    description:
+      "Designing smooth, intuitive interactions that prioritize the user at every step.",
+  },
+  {
+    title: "Continuous Learning",
+    description:
+      "Embracing growth through curiosity, experimentation, and staying up-to-date with evolving tech.",
+  },
+];
+
 
   return (
     <section id="about" className="py-20 bg-gradient-subtle">
@@ -42,8 +49,7 @@ const About = () => {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Passionate developer with 5+ years of experience creating digital solutions 
-            that make a difference.
+            Web developer with a passion for building meaningful digital experiences over the past 2 years.
           </p>
         </motion.div>
 
@@ -58,8 +64,8 @@ const About = () => {
           >
             <div className="relative overflow-hidden rounded-2xl shadow-large">
               <img
-                src={profileImage}
-                alt="Alex Johnson - Full Stack Developer"
+                src="/profile-image.jpg"
+                alt="Diogenes Tayam - Web Developer"
                 className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
@@ -74,26 +80,70 @@ const About = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <div>
-              <h3 className="text-2xl font-bold mb-4">My Journey</h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                I started my journey in web development 5 years ago, driven by a passion for 
-                creating digital experiences that solve real-world problems. From crafting 
-                pixel-perfect UIs to architecting scalable backend systems, I love every 
-                aspect of the development process.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                When I'm not coding, you'll find me exploring new technologies, contributing 
-                to open-source projects, or capturing moments through photography. I believe 
-                in continuous learning and staying curious about the ever-evolving tech landscape.
-              </p>
+            {/* Four horizontal cards before My Journey, theme-aware */}
+            <div className="flex flex-col md:flex-row gap-6 mb-8 justify-center items-stretch">
+              <Card className="flex-1 bg-card text-card-foreground text-center p-6 rounded-xl shadow-md border border-border">
+                <img
+                  src="https://2.bp.blogspot.com/-Xp6D9yzy0nU/UVzwdMGSdxI/AAAAAAAAAD0/CUV6Fm-JISI/s1600/BU+Logo.png"
+                  alt="Bicol University"
+                  className="mx-auto mb-4 w-16 h-16"
+                />
+                <h4 className="text-xl font-bold mb-2">
+                  Graduated at Bicol University
+                </h4>
+                <p className="text-muted-foreground">
+                  BSIT | Magna Cum Laude
+                </p>
+              </Card>
+              <Card className="flex-1 bg-card text-card-foreground text-center p-6 rounded-xl shadow-md border border-border">
+                <span className="mx-auto mb-6 block text-primary text-5xl">
+                  &lt;/&gt;
+                </span>
+                <h4 className="text-xl font-bold mb-2">
+                  Full Stack Developer
+                </h4>
+                <p className="text-muted-foreground">
+                  Experienced in both frontend and backend development
+                </p>
+              </Card>
+              {/* <Card className="flex-1 bg-card text-card-foreground text-center p-6 rounded-xl shadow-md border border-border">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
+                  alt="Figma"
+                  className="mx-auto mb-4 w-16 h-16"
+                />
+                <h4 className="text-xl font-bold mb-2">Web D</h4>
+                <p className="text-muted-foreground">
+                                </p>
+              </Card> */}
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-3">Interests & Hobbies</h4>
+              <h3 className="text-2xl font-bold mb-4">My Journey</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                My journey into web development began two years ago during
+                college, fueled by a deep interest in building digital solutions
+                to real-world challenges. Whether it's designing polished user
+                interfaces or developing backend systems, I genuinely enjoy
+                every step of the process.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Outside of tech, I’m a fan of photography and love spending time capturing everyday moments through my mobile phone. 
+                I also enjoy watching movies — especially anything with a great story or cinematography. 
+                These interests often inspire my creative approach to problem-solving and design.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-3">
+                Interests & Hobbies
+              </h4>
               <div className="flex flex-wrap gap-2">
                 {interests.map((interest) => (
-                  <Badge key={interest} variant="secondary" className="px-3 py-1">
+                  <Badge
+                    key={interest}
+                    variant="secondary"
+                    className="px-3 py-1"
+                  >
                     {interest}
                   </Badge>
                 ))}
@@ -113,7 +163,7 @@ const About = () => {
           <h3 className="text-3xl font-bold text-center mb-12">
             What Drives <span className="gradient-text">Me</span>
           </h3>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <motion.div
