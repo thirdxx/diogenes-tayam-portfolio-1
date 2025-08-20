@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import profileImage from './profile-image.jpg';
+import profileImage from '../assets/profile-image.jpg'';
 
 const About = () => {
   const interests = [
