@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "./ThemeProvider";
@@ -10,6 +10,7 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,8 +45,6 @@ const Navigation = () => {
     // Close mobile menu immediately
     setIsMobileMenuOpen(false);
 
-    if (location.pathname !== "/") return;
-
     const scrollToElement = () => {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -58,9 +57,12 @@ const Navigation = () => {
     // Try immediately first
     if (!scrollToElement()) {
       // If element not found, try again after a short delay
+      let retryCount = 0;
+      const maxRetries = 10;
+
       const retryScroll = () => {
-        if (!scrollToElement()) {
-          // Retry up to 10 times with 100ms intervals
+        if (retryCount < maxRetries && !scrollToElement()) {
+          retryCount++;
           setTimeout(retryScroll, 100);
         }
       };
@@ -189,22 +191,53 @@ const Navigation = () => {
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 glass rounded-lg mt-2">
                 {navItems.map((item) => (
                   <div key={item.href}>
-                    <Link
-                      to={`/#${resolveSectionId(item.label)}`}
-                      className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 hover:bg-accent/10"
-                      onClick={(e) => {
+                    <button
+                      className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 hover:bg-accent/10 w-full text-left"
+                      onClick={() => {
                         const targetId = resolveSectionId(item.label);
-                        if (location.pathname === "/") {
-                          e.preventDefault();
-                          scrollToSection(targetId);
+
+                        console.log(
+                          `Mobile nav clicked: ${item.label} -> ${targetId}`
+                        );
+
+                        // Close mobile menu immediately
+                        setIsMobileMenuOpen(false);
+
+                        const scrollToTarget = () => {
+                          const element = document.getElementById(targetId);
+                          console.log(
+                            `Looking for element: ${targetId}`,
+                            element
+                          );
+                          if (element) {
+                            console.log(`Scrolling to: ${targetId}`);
+                            element.scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            console.log(
+                              `Element not found: ${targetId}, retrying...`
+                            );
+                            // Retry after a short delay
+                            setTimeout(scrollToTarget, 100);
+                          }
+                        };
+
+                        if (location.pathname !== "/") {
+                          console.log("Navigating to home page first");
+                          // Navigate to home page first
+                          navigate("/");
+                          // Wait for navigation, then scroll
+                          setTimeout(scrollToTarget, 300);
                         } else {
-                          // Close menu immediately when navigating to a different page
-                          setIsMobileMenuOpen(false);
+                          console.log(
+                            "Already on home page, scrolling directly"
+                          );
+                          // Already on home page, just scroll
+                          setTimeout(scrollToTarget, 100);
                         }
                       }}
                     >
                       {item.label}
-                    </Link>
+                    </button>
                   </div>
                 ))}
               </div>
