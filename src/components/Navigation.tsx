@@ -41,12 +41,30 @@ const Navigation = () => {
   };
 
   const scrollToSection = (sectionId: string) => {
+    // Close mobile menu immediately
+    setIsMobileMenuOpen(false);
+
     if (location.pathname !== "/") return;
 
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+    const scrollToElement = () => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        return true; // Success
+      }
+      return false; // Failed
+    };
+
+    // Try immediately first
+    if (!scrollToElement()) {
+      // If element not found, try again after a short delay
+      const retryScroll = () => {
+        if (!scrollToElement()) {
+          // Retry up to 10 times with 100ms intervals
+          setTimeout(retryScroll, 100);
+        }
+      };
+      setTimeout(retryScroll, 100);
     }
   };
 
@@ -54,15 +72,20 @@ const Navigation = () => {
   useEffect(() => {
     if (location.pathname === "/" && location.hash) {
       const id = decodeURIComponent(location.hash.slice(1));
-      // Delay to ensure target section is rendered
-      const t = window.setTimeout(() => {
+
+      const scrollToHash = () => {
         const el = document.getElementById(id);
         if (el) {
           el.scrollIntoView({ behavior: "smooth" });
           setIsMobileMenuOpen(false);
+        } else {
+          // Try again in 100ms
+          setTimeout(scrollToHash, 100);
         }
-      }, 0);
-      return () => window.clearTimeout(t);
+      };
+
+      // Small delay to ensure page has rendered
+      setTimeout(scrollToHash, 50);
     }
   }, [location.pathname, location.hash]);
 
@@ -115,9 +138,6 @@ const Navigation = () => {
                       if (location.pathname === "/") {
                         e.preventDefault();
                         scrollToSection(targetId);
-                      } else {
-                        // Navigates to "/#section"; useEffect will handle scrolling on the home page
-                        setIsMobileMenuOpen(false);
                       }
                     }}
                   >
@@ -180,7 +200,7 @@ const Navigation = () => {
                           e.preventDefault();
                           scrollToSection(targetId);
                         } else {
-                          // Will navigate to home with hash; effect will scroll and we close the menu
+                          // Close menu immediately when navigating to a different page
                           setIsMobileMenuOpen(false);
                         }
                       }}
