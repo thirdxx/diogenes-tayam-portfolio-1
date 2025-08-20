@@ -55,14 +55,17 @@ const Navigation = () => {
     if (location.pathname === "/" && location.hash) {
       const id = decodeURIComponent(location.hash.slice(1));
       // Delay to ensure target section is rendered
-      const t = window.setTimeout(() => {
+      const scrollToHash = () => {
         const el = document.getElementById(id);
         if (el) {
           el.scrollIntoView({ behavior: "smooth" });
           setIsMobileMenuOpen(false);
+        } else {
+          // Try again in 100ms
+          setTimeout(scrollToHash, 100);
         }
-      }, 0);
-      return () => window.clearTimeout(t);
+      };
+      scrollToHash();
     }
   }, [location.pathname, location.hash]);
 
