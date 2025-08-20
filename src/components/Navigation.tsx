@@ -72,7 +72,7 @@ const Navigation = () => {
   useEffect(() => {
     if (location.pathname === "/" && location.hash) {
       const id = decodeURIComponent(location.hash.slice(1));
-
+      // Delay to ensure target section is rendered
       const scrollToHash = () => {
         const el = document.getElementById(id);
         if (el) {
@@ -83,9 +83,7 @@ const Navigation = () => {
           setTimeout(scrollToHash, 100);
         }
       };
-
-      // Small delay to ensure page has rendered
-      setTimeout(scrollToHash, 50);
+      scrollToHash();
     }
   }, [location.pathname, location.hash]);
 
