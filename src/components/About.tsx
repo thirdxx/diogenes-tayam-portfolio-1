@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import profileImage from './profile-image.jpg';
 
 const About = () => {
   const interests = [
@@ -64,7 +65,7 @@ const About = () => {
           >
             <div className="relative overflow-hidden rounded-2xl shadow-large">
               <img
-                src="/profile-image.jpg"
+                 src={profileImage}
                 alt="Diogenes Tayam - Web Developer"
                 className="w-full h-auto object-cover"
               />
