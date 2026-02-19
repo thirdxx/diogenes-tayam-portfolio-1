@@ -18,9 +18,28 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: "Prediction Market Intelligence Platform",
+      description:
+        "[PRIVATE] A non-custodial, community marketplace where users discover, build, buy/sell strategies, bots, signals, alerts for prediction markets. ",
+      image: ,
+      technologies: [
+        "Next.js",
+        "Node.js",
+        "Express.js",
+        "PostgreSQL",
+        "Docker",
+        "Redis",
+        "External Services",
+      ],
+      githubUrl: "",
+      liveUrl: "",
+      featured: true,
+    },
+    {
+      id: 2,
       title: "Bicol University Student Archiving System",
       description:
-        "An archiving system for Bicol University students to store and retrieve academic records. It includes system-generated records, and a user-friendly interface.",
+        "[PRIVATE] An archiving system for Bicol University students to store and retrieve academic records. It includes system-generated records, and a user-friendly interface.",
       image: project1,
       technologies: [
         "Filament PHP",
@@ -35,7 +54,7 @@ const Projects = () => {
       featured: true,
     },
     {
-      id: 2,
+      id: 3,
       title: "E-commerce Platform",
       description:
         "A full-stack e-commerce platform or renting event equipment across Albay. Features include user authentication, product catalog, shopping cart, and payment integration.",
@@ -46,7 +65,7 @@ const Projects = () => {
       featured: true,
     },
     {
-      id: 3,
+      id: 4,
       title: "Mobile Application Dictionary",
       description:
         "A mobile dictionary application for Android only. It provides offline access to a vast collection of gay lingo words and definitions, with features like search, favorites, history, contribute words. It has 2 systems, a dictionary system and a language expert system.",
@@ -57,12 +76,23 @@ const Projects = () => {
       featured: false,
     },
     {
-      id: 4,
-      title: "Voghami",
+      id: 5,
+      title: "Bicol University Center of Excellence - Self Assessment Tool",
       description:
-        "A simple e-commerce website for a fictional device store, featuring product listings and shopping cart functionality.",
-      image: project4,
-      technologies: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL"],
+        "[PRIVATE] A web-based self-assessment tool for evaluating university programs per Key Result Areas (KRAs)."
+      image: ,
+      technologies: ["Laravel", "PHP", "JavaScript", "Tailwind CSS", "Alpine.js", "MySQL"],
+      githubUrl: "",
+      liveUrl: "",
+      featured: false,
+    },
+    {
+      id: 6,
+      title: "TNHS Databank System",
+      description:
+        "[Private] A databank system for managing teachers' and students' data in a high school institution. It includes report generation and data entry functionality.",
+      image:,
+      technologies: ["Filament PHP", "MySQL"],
       githubUrl: "",
       liveUrl: "",
       featured: false,
