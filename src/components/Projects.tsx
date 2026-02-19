@@ -21,7 +21,7 @@ const Projects = () => {
       title: "Prediction Market Intelligence Platform",
       description:
         "[PRIVATE] A non-custodial, community marketplace where users discover, build, buy/sell strategies, bots, signals, alerts for prediction markets. ",
-      image: ,
+      image:
       technologies: [
         "Next.js",
         "Node.js",
