@@ -50,7 +50,7 @@ const About = () => {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Web developer with a passion for building meaningful digital experiences over the past 2 years.
+            Web developer with a passion for building meaningful digital experiences over the past 3 years.
           </p>
         </motion.div>
 
@@ -122,7 +122,7 @@ const About = () => {
             <div>
               <h3 className="text-2xl font-bold mb-4">My Journey</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                My journey into web development began 4 years ago during
+                My journey into web development began 3 years ago during
                 college, fueled by a deep interest in building digital solutions
                 to real-world challenges. Whether it's designing polished user
                 interfaces or developing backend systems, I genuinely enjoy
