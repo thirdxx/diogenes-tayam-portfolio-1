@@ -7,43 +7,112 @@ const Skills = () => {
     {
       title: "Programming Languages & Database Management",
       skills: [
-        { name: "HTML5", level: 95, icon: "🌐" },
-        { name: "CSS3", level: 95, icon: "🎨" },
-        { name: "JavaScript", level: 90, icon: "📜" },
-        { name: "TypeScript", level: 85, icon: "📘" },
-        { name: "PHP", level: 80, icon: "🐘" },
-        { name: "Dart", level: 75, icon: "�" },
-        { name: "C", level: 70, icon: "💻" },
-        { name: "C#", level: 70, icon: "#️⃣" },
-        { name: "C++", level: 70, icon: "➕" },
-        { name: "Python", level: 80, icon: "�" },
-        { name: "MySQL", level: 85, icon: "🗄️" },
-        { name: "NoSQL", level: 75, icon: "🍃" },
+        { name: "HTML5", level: 95},
+        { name: "CSS3", level: 95 },
+        { name: "JavaScript", level: 90 },
+        { name: "TypeScript", level: 85},
+        { name: "PHP", level: 80},
+        { name: "Dart", level: 75 },
+        { name: "Python", level: 80},
+        { name: "MySQL", level: 85},
+        { name: "PostgreSQL", level: 75 },
+        { name: "NoSQL", level: 75 },
+        { name: "Redis", level: 70 },
       ],
     },
     {
       title: "Frameworks & Libraries",
       skills: [
-        { name: "Laravel", level: 80, icon: "🌱" },
-        { name: "Laravel Filament", level: 75, icon: "🧩" },
-        { name: "Flutter", level: 80, icon: "�" },
-        { name: "React.js", level: 85, icon: "⚛️" },
-        { name: "Tailwind", level: 90, icon: "💨" },
-        { name: "Bootstrap", level: 80, icon: "�️" },
+        { name: "React.js", level: 85},
+        { name: "Next.js", level: 80},
+        { name: "Node.js", level: 80},
+        { name: "Express.js", level: 78},
+        { name: "Laravel", level: 80},
+        { name: "Filament PHP", level: 75},
+        { name: "Livewire", level: 72},
+        { name: "Alpine.js", level: 75},
+        { name: "Flutter", level: 80},
+        { name: "Tailwind CSS", level: 90},
+        { name: "Bootstrap", level: 80},
+        { name: "Prisma", level: 75},
+        { name: "Stripe", level: 70},
+        { name: "Jest", level: 68},
+        { name: "Vite", level: 80},
       ],
     },
     {
       title: "Tools",
       skills: [
-        { name: "Git", level: 90, icon: "🔧" },
-        { name: "GitHub", level: 90, icon: "�" },
-        { name: "Visual Studio Code", level: 95, icon: "�️" },
-        { name: "Android Studio", level: 80, icon: "🤖" },
-        { name: "Firebase", level: 80, icon: "🔥" },
-        { name: "Microsoft Office", level: 85, icon: "📄" },
-        { name: "Figma", level: 80, icon: "🎨" },
-        { name: "Canva", level: 80, icon: "🖌️" },
+        { name: "Git", level: 90 },
+        { name: "Git CLI", level: 88 },
+        { name: "GitHub", level: 90 },
+        { name: "Docker", level: 75 },
+        { name: "Visual Studio Code", level: 95 },
+        { name: "Android Studio", level: 80 },
+        { name: "Firebase", level: 80 },
+        { name: "Microsoft Office", level: 85 },
+        { name: "Figma", level: 80 },
+        { name: "Canva", level: 80 },
       ],
+    },
+  ];
+
+  // Note: Tools category intentionally has no icons
+
+  const techStackIcons = [
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", alt: "React" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", alt: "Next.js" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", alt: "TypeScript" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", alt: "HTML5" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg", alt: "CSS3" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", alt: "JavaScript" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", alt: "Node.js" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg", alt: "Express.js" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg", alt: "Laravel" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg", alt: "Flutter" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", alt: "MySQL" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", alt: "PostgreSQL" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg", alt: "Redis" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", alt: "Docker" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", alt: "GitHub" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg", alt: "Figma" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg", alt: "PHP" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", alt: "MongoDB" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg", alt: "Dart" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg", alt: "VS Code" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg", alt: "Android Studio" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", alt: "Python" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg", alt: "C#" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg", alt: "Jest" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg", alt: "Vite" },
+    { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg", alt: "Prisma" },
+  ];
+
+  const aiTools = [
+    {
+      name: "Claude",
+      description: "Anthropic's AI assistant",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Claude_AI_logo.svg/1024px-Claude_AI_logo.svg.png",
+    },
+    {
+      name: "Cursor",
+      description: "AI-powered code editor",
+      logo: "https://cursor.sh/apple-touch-icon.png",
+    },
+    {
+      name: "GitHub Copilot",
+      description: "AI pair programmer",
+      logo: "https://github.gallerycdn.vsassets.io/extensions/github/copilot/1.272.1276/1742320371584/Microsoft.VisualStudio.Services.Icons.Default",
+    },
+    {
+      name: "ChatGPT",
+      description: "OpenAI's conversational AI",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1024px-ChatGPT_logo.svg.png",
+    },
+    {
+      name: "Replit",
+      description: "AI-assisted coding platform",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/New_Replit_Logo.svg/1024px-New_Replit_Logo.svg.png",
     },
   ];
 
@@ -77,108 +146,14 @@ const Skills = () => {
             Technical Stack
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-6 py-6">
-            {/* React */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-              alt="React"
-              className="h-10"
-            />
-            {/* TypeScript */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-              alt="TypeScript"
-              className="h-10"
-            />
-            {/* HTML5 */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-              alt="HTML5"
-              className="h-10"
-            />
-            {/* CSS3 */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-              alt="CSS3"
-              className="h-10"
-            />
-            {/* JavaScript */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-              alt="JavaScript"
-              className="h-10"
-            />
-            {/* Laravel */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
-              alt="Laravel"
-              className="h-10"
-            />
-            {/* Flutter */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
-              alt="Flutter"
-              className="h-10"
-            />
-            {/* MySQL */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-              alt="MySQL"
-              className="h-10"
-            />
-            {/* GitHub */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-              alt="GitHub"
-              className="h-10"
-            />
-            {/* Figma */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
-              alt="Figma"
-              className="h-10"
-            />
-            {/* PHP */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
-              alt="PHP"
-              className="h-10"
-            />
-            {/* MongoDB */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-              alt="MongoDB"
-              className="h-10"
-            />
-            {/* Dart */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg"
-              alt="Dart"
-              className="h-10"
-            />
-            {/* VS Code */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-              alt="VS Code"
-              className="h-10"
-            />
-            {/* Android Studio */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg"
-              alt="Android Studio"
-              className="h-10"
-            />
-            {/* Python */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-              alt="Python"
-              className="h-10"
-            />
-            {/* C# */}
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
-              alt="C#"
-              className="h-10"
-            />
+            {techStackIcons.map((icon) => (
+              <img
+                key={icon.alt}
+                src={icon.src}
+                alt={icon.alt}
+                className="h-10"
+              />
+            ))}
           </div>
         </div>
 
@@ -212,7 +187,9 @@ const Skills = () => {
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            <span className="text-lg">{skill.icon}</span>
+                            {"icon" in skill && (
+                              <span className="text-lg">{skill.icon}</span>
+                            )}
                             <span className="font-medium text-sm">
                               {skill.name}
                             </span>
@@ -245,7 +222,43 @@ const Skills = () => {
           ))}
         </motion.div>
 
-        {/* Additional Skills Section */}
+        {/* AI Tools Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <h3 className="text-2xl font-bold mb-8">
+            AI <span className="gradient-text">Tools</span>
+          </h3>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            {aiTools.map((tool, index) => (
+              <motion.div
+                key={tool.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-3 px-5 py-3 rounded-xl glass hover:shadow-medium transition-all duration-300 hover:scale-105"
+              >
+                <img
+                  src={tool.logo}
+                  alt={tool.name}
+                  className="w-8 h-8 object-contain rounded"
+                />
+                <div className="text-left">
+                  <p className="text-sm font-semibold">{tool.name}</p>
+                  <p className="text-xs text-muted-foreground">{tool.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Skills in Progress Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -263,8 +276,8 @@ const Skills = () => {
               "Angular",
               "React Native",
               "MongoDB",
-              "Express.js",
-              "Node.js",
+              "GraphQL",
+              "Kubernetes",
             ].map((skill, index) => (
               <motion.div
                 key={skill}
