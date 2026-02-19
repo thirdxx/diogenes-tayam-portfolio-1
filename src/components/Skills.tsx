@@ -91,27 +91,22 @@ const Skills = () => {
   const aiTools = [
     {
       name: "Claude",
-      description: "Anthropic's AI assistant",
       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Claude_AI_logo.svg/1024px-Claude_AI_logo.svg.png",
     },
     {
       name: "Cursor",
-      description: "AI-powered code editor",
       logo: "https://cursor.sh/apple-touch-icon.png",
     },
     {
       name: "GitHub Copilot",
-      description: "AI pair programmer",
-      logo: "https://github.gallerycdn.vsassets.io/extensions/github/copilot/1.272.1276/1742320371584/Microsoft.VisualStudio.Services.Icons.Default",
+      logo: "https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/dark/githubcopilot.png",
     },
     {
       name: "ChatGPT",
-      description: "OpenAI's conversational AI",
       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1024px-ChatGPT_logo.svg.png",
     },
     {
       name: "Replit",
-      description: "AI-assisted coding platform",
       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/New_Replit_Logo.svg/1024px-New_Replit_Logo.svg.png",
     },
   ];
