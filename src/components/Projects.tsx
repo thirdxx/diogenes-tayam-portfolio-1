@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ImageOff } from "lucide-react";
 import {
   Dialog,
   DialogTrigger,
@@ -14,14 +14,23 @@ import project2 from "@/assets/parental.jpg";
 import project3 from "@/assets/queery.png";
 import project4 from "@/assets/voghami.jpg";
 
+const ImageUnavailable = () => (
+  <div className="w-full h-64 lg:h-full flex flex-col items-center justify-center bg-muted/50 border-r border-border gap-3">
+    <ImageOff className="h-10 w-10 text-muted-foreground/40" />
+    <span className="text-sm text-muted-foreground/60 font-medium tracking-wide">
+      Image Unavailable
+    </span>
+  </div>
+);
+
 const Projects = () => {
   const projects = [
     {
       id: 1,
       title: "Prediction Market Intelligence Platform",
       description:
-        "[PRIVATE] A non-custodial, community marketplace where users discover, build, buy/sell strategies, bots, signals, alerts for prediction markets. ",
-      image:
+        "[PRIVATE] A non-custodial, community marketplace where users discover, build, buy/sell strategies, bots, signals, alerts for prediction markets.",
+      image: null,
       technologies: [
         "Next.js",
         "Node.js",
@@ -57,7 +66,7 @@ const Projects = () => {
       id: 3,
       title: "E-commerce Platform",
       description:
-        "A full-stack e-commerce platform or renting event equipment across Albay. Features include user authentication, product catalog, shopping cart, and payment integration.",
+        "A full-stack e-commerce platform for renting event equipment across Albay. Features include user authentication, product catalog, shopping cart, and payment integration.",
       image: project2,
       technologies: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL"],
       githubUrl: "https://github.com/thirdxx/PaRental-Guardian-Website",
@@ -79,8 +88,8 @@ const Projects = () => {
       id: 5,
       title: "Bicol University Center of Excellence - Self Assessment Tool",
       description:
-        "[PRIVATE] A web-based self-assessment tool for evaluating university programs per Key Result Areas (KRAs)."
-      image: ,
+        "[PRIVATE] A web-based self-assessment tool for evaluating university programs per Key Result Areas (KRAs).",
+      image: null,
       technologies: ["Laravel", "PHP", "JavaScript", "Tailwind CSS", "Alpine.js", "MySQL"],
       githubUrl: "",
       liveUrl: "",
@@ -91,7 +100,7 @@ const Projects = () => {
       title: "TNHS Databank System",
       description:
         "[Private] A databank system for managing teachers' and students' data in a high school institution. It includes report generation and data entry functionality.",
-      image:,
+      image: null,
       technologies: ["Filament PHP", "MySQL"],
       githubUrl: "",
       liveUrl: "",
@@ -136,22 +145,24 @@ const Projects = () => {
                   project.featured ? "border-primary/20 shadow-glow" : ""
                 }`}
               >
-                <div
-                  className={`grid ${
-                    index % 2 === 0 ? "lg:grid-cols-2" : "lg:grid-cols-2"
-                  } gap-0`}
-                >
+                <div className="grid lg:grid-cols-2 gap-0">
                   <div
                     className={`relative overflow-hidden ${
                       index % 2 === 1 ? "lg:order-2" : ""
                     }`}
                   >
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-64 lg:h-full object-cover transition-transform duration-500 hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                    {project.image ? (
+                      <>
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-64 lg:h-full object-cover transition-transform duration-500 hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                      </>
+                    ) : (
+                      <ImageUnavailable />
+                    )}
                   </div>
 
                   <CardContent
@@ -231,20 +242,6 @@ const Projects = () => {
                             </DialogContent>
                           </Dialog>
                         )}
-
-                        {/* <Button
-                          className="flex items-center gap-2 gradient-bg"
-                          asChild
-                        >
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <ExternalLink className="h-4 w-4" />
-                            Live Demo
-                          </a>
-                        </Button> */}
                       </div>
                     </div>
                   </CardContent>
@@ -260,17 +257,7 @@ const Projects = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
           className="text-center mt-16"
-        >
-          {/* <Button variant="outline" className="px-8 py-3 text-lg" asChild>
-            <a
-              href="https://github.com/thirdxx"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View All Projects on GitHub
-            </a>
-          </Button> */}
-        </motion.div>
+        />
       </div>
     </section>
   );
